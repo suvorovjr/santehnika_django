@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="container py-5">
+    <h1 style="text-align: center" class="text-body-emphasis">Выберите категорию</h1>
+</div>
+{% for object in objects_list %}
+<div class="row">
+    <div class="col-12 col-lg-10 offset-lg-1 m-auto">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-3"><img src="{{ object.imagine|my_media }}" class="img-fluid" width="250"></div>
+                    <div class="col-9">
+                        <h2 class="h4">{{ object.title }}</h2>
+                        <p>{{ object.description }}</p>
+                        <a href="{% url 'main:products' object.pk %}" class="btn btn-outline-primary btn-sm mr-3 mb-2">Показать</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
